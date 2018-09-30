@@ -35,6 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
                         .allowMainThreadQueries()
                         .build();
 
+
             }
         }
         Log.d(LOG_TAG, "Getting the database instance");
