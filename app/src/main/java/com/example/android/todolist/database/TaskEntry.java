@@ -7,14 +7,14 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "task")
+@Entity(tableName = "tasks_01")
 public class TaskEntry {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String description;
     private int priority;
-    @ColumnInfo(name = "updated_at")
+    @ColumnInfo(name = "price_of")
     private Date updatedAt;
 
     @Ignore

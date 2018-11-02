@@ -30,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //                        .build();
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class,
-                        "tasks.db")
+                        "tasks_01.db")
                         .openHelperFactory(new AssetSQLiteOpenHelperFactory())
                         .allowMainThreadQueries()
                         .build();
