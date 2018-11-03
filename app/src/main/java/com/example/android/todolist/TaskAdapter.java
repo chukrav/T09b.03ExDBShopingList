@@ -89,6 +89,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         int price =  taskEntry.getUpdatedAt();
         String updatedAt = String.valueOf((float)price/100);
         String category = taskEntry.getCategory();
+        int amount = taskEntry.getAmount();
 
         //Set values
         holder.taskDescriptionView.setText(description);
@@ -99,6 +100,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         // Programmatically set the text and color for the priority TextView
         String priorityString = "" + priority; // converts int to String
         holder.priorityView.setText(priorityString);
+
+        holder.amountView.setText(String.valueOf((float)amount/100) + " kg/cnt");
+        //holder.amountView.setText("2.5 kg/cnt");
 
         GradientDrawable priorityCircle = (GradientDrawable) holder.priorityView.getBackground();
         // Get the appropriate background color based on the priority
@@ -160,6 +164,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TextView taskDescriptionView;
         TextView updatedAtView;
         TextView priorityView;
+        TextView amountView;
 
         /**
          * Constructor for the TaskViewHolders.
@@ -172,6 +177,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskDescriptionView = itemView.findViewById(R.id.taskDescription);
             updatedAtView = itemView.findViewById(R.id.taskUpdatedAt);
             priorityView = itemView.findViewById(R.id.priorityTextView);
+            amountView = itemView.findViewById(R.id.amount);
             itemView.setOnClickListener(this);
         }
 

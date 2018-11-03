@@ -14,8 +14,9 @@ public class TaskEntry {
     private int priority;
     @ColumnInfo(name = "price_of")
 //    private Date updatedAt;
-        private int updatedAt;
+    private int updatedAt;
     private String category;
+    private int amount;
 
     @Ignore
 //    public TaskEntry(String description, int priority, Date updatedAt) {
@@ -24,15 +25,17 @@ public class TaskEntry {
         this.priority = priority;
         this.updatedAt = updatedAt;
         category = "EVERYTHING";
+        amount = 200;
     }
 
-//    public TaskEntry(int id, String description, int priority, Date updatedAt) {
+    //    public TaskEntry(int id, String description, int priority, Date updatedAt) {
     public TaskEntry(int id, String description, int priority, int updatedAt) {
         this.id = id;
         this.description = description;
         this.priority = priority;
         this.updatedAt = updatedAt;
         category = "EVERYTHING";
+        amount = 200;
     }
 
     public int getId() {
@@ -67,7 +70,7 @@ public class TaskEntry {
         return updatedAt;
     }
 
-//    public void setUpdatedAt(Date updatedAt) {
+    //    public void setUpdatedAt(Date updatedAt) {
     public void setUpdatedAt(int updatedAt) {
         this.updatedAt = updatedAt;
     }
@@ -78,6 +81,14 @@ public class TaskEntry {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
 }
