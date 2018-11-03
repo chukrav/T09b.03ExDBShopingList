@@ -85,9 +85,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TaskEntry taskEntry = mTaskEntries.get(position);
         String description = taskEntry.getDescription();
         int priority = taskEntry.getPriority();
-//        String updatedAt = dateFormat.format(taskEntry.getUpdatedAt());
-        int price =  taskEntry.getUpdatedAt();
-        String updatedAt = String.valueOf((float)price/100);
+//        String priceOf = dateFormat.format(taskEntry.getPriceOf());
+        int price =  taskEntry.getPriceOf();
+        String priceOf = String.valueOf((float)price/100);
         String category = taskEntry.getCategory();
         int amount = taskEntry.getAmount();
 
@@ -95,7 +95,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.taskDescriptionView.setText(description);
 //        holder.taskDescriptionView.setText(description + " "
 //        + category);
-        holder.updatedAtView.setText(updatedAt + " nis");
+        holder.priceOfView.setText(priceOf + " nis");
 
         // Programmatically set the text and color for the priority TextView
         String priorityString = "" + priority; // converts int to String
@@ -162,7 +162,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         // Class variables for the task description and priority TextViews
         TextView taskDescriptionView;
-        TextView updatedAtView;
+        TextView priceOfView;
         TextView priorityView;
         TextView amountView;
 
@@ -175,7 +175,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             super(itemView);
 
             taskDescriptionView = itemView.findViewById(R.id.taskDescription);
-            updatedAtView = itemView.findViewById(R.id.taskUpdatedAt);
+            priceOfView = itemView.findViewById(R.id.taskUpdatedAt);
             priorityView = itemView.findViewById(R.id.priorityTextView);
             amountView = itemView.findViewById(R.id.amount);
             itemView.setOnClickListener(this);

@@ -13,27 +13,27 @@ public class TaskEntry {
     private String description;
     private int priority;
     @ColumnInfo(name = "price_of")
-//    private Date updatedAt;
-    private int updatedAt;
+//    private Date priceOf;
+    private int priceOf;
     private String category;
     private int amount;
 
     @Ignore
-//    public TaskEntry(String description, int priority, Date updatedAt) {
-    public TaskEntry(String description, int priority, int updatedAt) {
+//    public TaskEntry(String description, int priority, Date priceOf) {
+    public TaskEntry(String description, int priority, int priceOf) {
         this.description = description;
         this.priority = priority;
-        this.updatedAt = updatedAt;
+        this.priceOf = priceOf;
         category = "EVERYTHING";
         amount = 200;
     }
 
-    //    public TaskEntry(int id, String description, int priority, Date updatedAt) {
-    public TaskEntry(int id, String description, int priority, int updatedAt) {
+    //    public TaskEntry(int id, String description, int priority, Date priceOf) {
+    public TaskEntry(int id, String description, int priority, int priceOf) {
         this.id = id;
         this.description = description;
         this.priority = priority;
-        this.updatedAt = updatedAt;
+        this.priceOf = priceOf;
         category = "EVERYTHING";
         amount = 200;
     }
@@ -62,17 +62,17 @@ public class TaskEntry {
         this.priority = priority;
     }
 
-//    public Date getUpdatedAt() {
-//        return updatedAt;
+//    public Date getPriceOf() {
+//        return priceOf;
 //    }
 
-    public int getUpdatedAt() {
-        return updatedAt;
+    public int getPriceOf() {
+        return priceOf;
     }
 
-    //    public void setUpdatedAt(Date updatedAt) {
-    public void setUpdatedAt(int updatedAt) {
-        this.updatedAt = updatedAt;
+    //    public void setPriceOf(Date priceOf) {
+    public void setPriceOf(int priceOf) {
+        this.priceOf = priceOf;
     }
 
     public String getCategory() {
