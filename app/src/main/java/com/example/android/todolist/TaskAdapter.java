@@ -175,7 +175,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             super(itemView);
 
             taskDescriptionView = itemView.findViewById(R.id.taskDescription);
-            priceOfView = itemView.findViewById(R.id.taskUpdatedAt);
+            priceOfView = itemView.findViewById(R.id.taskPriceOf);
             priorityView = itemView.findViewById(R.id.priorityTextView);
             amountView = itemView.findViewById(R.id.amount);
             itemView.setOnClickListener(this);
