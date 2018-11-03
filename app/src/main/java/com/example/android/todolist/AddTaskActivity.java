@@ -27,8 +27,6 @@ import android.widget.RadioGroup;
 import com.example.android.todolist.database.AppDatabase;
 import com.example.android.todolist.database.TaskEntry;
 
-import java.util.Date;
-
 
 public class AddTaskActivity extends AppCompatActivity {
 
@@ -113,7 +111,8 @@ public class AddTaskActivity extends AppCompatActivity {
     public void onSaveButtonClicked() {
         String description = mEditText.getText().toString();
         int priority = getPriorityFromViews();
-        Date date = new Date();
+//        Date date = new Date();
+        int date = 1111;
 
         TaskEntry taskEntry = new TaskEntry(description, priority, date);
         mDb.taskDao().insertTask(taskEntry);

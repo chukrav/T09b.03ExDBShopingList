@@ -5,8 +5,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "tasks_01")
 public class TaskEntry {
 
@@ -15,21 +13,21 @@ public class TaskEntry {
     private String description;
     private int priority;
     @ColumnInfo(name = "price_of")
-    private Date updatedAt;
-    //    private int updatedAt;
+//    private Date updatedAt;
+        private int updatedAt;
     private String category;
 
     @Ignore
-    public TaskEntry(String description, int priority, Date updatedAt) {
-//    public TaskEntry(String description, int priority, int updatedAt) {
+//    public TaskEntry(String description, int priority, Date updatedAt) {
+    public TaskEntry(String description, int priority, int updatedAt) {
         this.description = description;
         this.priority = priority;
         this.updatedAt = updatedAt;
         category = "EVERYTHING";
     }
 
-    public TaskEntry(int id, String description, int priority, Date updatedAt) {
-//    public TaskEntry(int id, String description, int priority, int updatedAt) {
+//    public TaskEntry(int id, String description, int priority, Date updatedAt) {
+    public TaskEntry(int id, String description, int priority, int updatedAt) {
         this.id = id;
         this.description = description;
         this.priority = priority;
@@ -61,16 +59,16 @@ public class TaskEntry {
         this.priority = priority;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-//    public int getUpdatedAt() {
+//    public Date getUpdatedAt() {
 //        return updatedAt;
 //    }
 
-    public void setUpdatedAt(Date updatedAt) {
-//    public void setUpdatedAt(int updatedAt) {
+    public int getUpdatedAt() {
+        return updatedAt;
+    }
+
+//    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(int updatedAt) {
         this.updatedAt = updatedAt;
     }
 
