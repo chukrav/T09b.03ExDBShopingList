@@ -10,7 +10,7 @@
 
     <!-- Strings for AddTaskActivity -->
     <!-- This etaskEntrytask has a unicode character for "..." = "&#8230;" -->
-    <string name="edit_task_description">Describe your taskEntry&#8230;</string>
+    <string name="edit_task_description">Describe your item&#8230;</string>
     <string name="priority_string">Priority</string>
 
     <string name="high_priority">High</string>
@@ -21,5 +21,8 @@
     <string name="update_button">Update</string>
     <string name="action_settings">sort by category</string>
     <string name="hide_selected">hide selected</string>
+    <string name="non_priority">Non</string>
+    <string name="edit_item_price">item\'s price</string>
+    <string name="edit_item_count">count of</string>
 
 </resources>

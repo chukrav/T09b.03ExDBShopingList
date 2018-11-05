@@ -38,12 +38,16 @@ public class AddTaskActivity extends AppCompatActivity {
     public static final int PRIORITY_HIGH = 1;
     public static final int PRIORITY_MEDIUM = 2;
     public static final int PRIORITY_LOW = 3;
+    public static final int PRIORITY_NON = 4;
+
     // Constant for default task id to be used when not in update mode
     private static final int DEFAULT_TASK_ID = -1;
     // Constant for logging
     private static final String TAG = AddTaskActivity.class.getSimpleName();
     // Fields for views
     EditText mEditText;
+    EditText mPriceText;
+    EditText mCountText;
     RadioGroup mRadioGroup;
     Button mButton;
 
@@ -84,6 +88,8 @@ public class AddTaskActivity extends AppCompatActivity {
      */
     private void initViews() {
         mEditText = findViewById(R.id.editTextTaskDescription);
+        mPriceText = findViewById(R.id.editTextPrice);
+        mCountText = findViewById(R.id.editTextCount);
         mRadioGroup = findViewById(R.id.radioGroup);
 
         mButton = findViewById(R.id.saveButton);
@@ -111,10 +117,14 @@ public class AddTaskActivity extends AppCompatActivity {
     public void onSaveButtonClicked() {
         String description = mEditText.getText().toString();
         int priority = getPriorityFromViews();
-//        Date date = new Date();
-        int date = 1111;
-
-        TaskEntry taskEntry = new TaskEntry(description, priority, date);
+//        Date priceOf = new Date();
+        float priceOf = Float.valueOf(mPriceText.getText().toString());
+        float countOf = Float.valueOf(mCountText.getText().toString());
+        priceOf *= 100;
+        countOf *= 100;
+        String category = "VEGETABLES";
+        TaskEntry taskEntry = new TaskEntry(description, priority, (int)priceOf,
+                category, (int)countOf);
         mDb.taskDao().insertTask(taskEntry);
         finish();
     }
@@ -123,7 +133,7 @@ public class AddTaskActivity extends AppCompatActivity {
      * getPriority is called whenever the selected priority needs to be retrieved
      */
     public int getPriorityFromViews() {
-        int priority = 1;
+        int priority = 2;
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup)).getCheckedRadioButtonId();
         switch (checkedId) {
             case R.id.radButton1:
@@ -134,6 +144,9 @@ public class AddTaskActivity extends AppCompatActivity {
                 break;
             case R.id.radButton3:
                 priority = PRIORITY_LOW;
+                break;
+            case R.id.radButton4:
+                priority = PRIORITY_NON;
         }
         return priority;
     }
@@ -153,6 +166,9 @@ public class AddTaskActivity extends AppCompatActivity {
                 break;
             case PRIORITY_LOW:
                 ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton3);
+                break;
+            case PRIORITY_NON:
+                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton4);
         }
     }
 }

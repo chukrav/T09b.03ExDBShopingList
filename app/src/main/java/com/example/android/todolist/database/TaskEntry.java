@@ -20,22 +20,25 @@ public class TaskEntry {
 
     @Ignore
 //    public TaskEntry(String description, int priority, Date priceOf) {
-    public TaskEntry(String description, int priority, int priceOf) {
+//    public TaskEntry(String description, int priority, int priceOf) {
+    public TaskEntry(String description, int priority, int priceOf,
+                     String category, int amount) {
         this.description = description;
         this.priority = priority;
         this.priceOf = priceOf;
-        category = "EVERYTHING";
-        amount = 200;
+        this.category = category;
+        this.amount = amount;
     }
 
     //    public TaskEntry(int id, String description, int priority, Date priceOf) {
-    public TaskEntry(int id, String description, int priority, int priceOf) {
+    public TaskEntry(int id, String description, int priority, int priceOf,
+                     String category, int amount) {
         this.id = id;
         this.description = description;
         this.priority = priority;
         this.priceOf = priceOf;
-        category = "EVERYTHING";
-        amount = 200;
+        this.category = category;
+        this.amount = amount;
     }
 
     public int getId() {

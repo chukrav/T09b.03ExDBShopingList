@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>VEGETABLE</item>
+        <item>MILK</item>
+        <item>CEREALS</item>
+        <item>HOUSEHOLDS</item>
+        <item>OIL</item>
+        <item>ALCOHOL</item>
+        <item>DRINKS</item>
+        <item>WATER</item>
+    </string-array>
+
+
+</resources>
