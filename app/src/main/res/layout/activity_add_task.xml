@@ -47,6 +47,11 @@
 
     </LinearLayout>
 
+    <Spinner
+        android:id="@+id/categories_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
     <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
     <TextView
         style="@style/TextAppearance.AppCompat.Medium"
@@ -117,14 +122,5 @@
         android:background="@color/colorPrimary"
         android:text="@string/add_button"
         android:textColor="@android:color/primary_text_dark" />
-
-    <Spinner
-        android:id="@+id/categories_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-
-    </Spinner>
-
 
 </LinearLayout>

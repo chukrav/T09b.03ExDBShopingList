@@ -1,18 +1,18 @@
 /*
-* Copyright (C) 2016 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.example.android.todolist;
 
@@ -20,15 +20,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.android.todolist.database.AppDatabase;
 import com.example.android.todolist.database.TaskEntry;
 
 
-public class AddTaskActivity extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener{
 
     // Extra for the task ID to be received in the intent
     public static final String EXTRA_TASK_ID = "extraTaskId";
@@ -50,6 +55,8 @@ public class AddTaskActivity extends AppCompatActivity {
     EditText mCountText;
     RadioGroup mRadioGroup;
     Button mButton;
+    Spinner mSpinner;
+    String mCategory;
 
     private int mTaskId = DEFAULT_TASK_ID;
 
@@ -75,6 +82,17 @@ public class AddTaskActivity extends AppCompatActivity {
                 // populate the UI
             }
         }
+
+        mSpinner = (Spinner) findViewById(R.id.categories_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.categories_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+        mSpinner.setOnItemSelectedListener(this);
+       mCategory = adapter.getItem(1).toString();
+        //mSpinner.getAdapter().getItem(1).toString();
+
+
     }
 
     @Override
@@ -122,9 +140,9 @@ public class AddTaskActivity extends AppCompatActivity {
         float countOf = Float.valueOf(mCountText.getText().toString());
         priceOf *= 100;
         countOf *= 100;
-        String category = "VEGETABLES";
-        TaskEntry taskEntry = new TaskEntry(description, priority, (int)priceOf,
-                category, (int)countOf);
+//        String category = "VEGETABLES";
+        TaskEntry taskEntry = new TaskEntry(description, priority, (int) priceOf,
+                mCategory, (int) countOf);
         mDb.taskDao().insertTask(taskEntry);
         finish();
     }
@@ -170,5 +188,17 @@ public class AddTaskActivity extends AppCompatActivity {
             case PRIORITY_NON:
                 ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton4);
         }
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+        mCategory = mSpinner.getAdapter().getItem(pos).toString();
+        Toast.makeText(this, "Item: " + mCategory, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
